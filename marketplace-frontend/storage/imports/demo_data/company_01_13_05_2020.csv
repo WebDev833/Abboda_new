@@ -1,0 +1,6 @@
+companytype_id,area_id,name,description,email,phone,rating,slug,latitude,longitude,address,company_image,active,catalog_enabled
+1,1,Dominos 1,Dominos,support@domino.com,9876543210,5,domino-restaurant,-22.46821,132.59863,"#1234, city state, country 987520",http://frontendmarketplace.com/img/vendor/store/1.jpg,1,0
+1,2,Dominos 2,Dominos,support@domino.com,9876543210,5,domino-restaurant,-22.46821,132.59863,"#1234, city state, country 987521",http://frontendmarketplace.com/img/vendor/store/1.jpg,1,0
+1,3,Dominos 3,Dominos,support@domino.com,9876543210,5,domino-restaurant,-22.46821,132.59863,"#1234, city state, country 987522",,1,0
+1,4,Dominos 4,Dominos,support@domino.com,9876543210,5,domino-restaurant,-22.46821,132.59863,"#1234, city state, country 987523",http://frontendmarketplace.com/img/vendor/store/1.jpg,1,0
+1,5,Dominos 5,Dominos,support@domino.com,9876543210,5,domino-restaurant,-22.46821,132.59863,"#1234, city state, country 987524",http://frontendmarketplace.com/img/vendor/store/1.jpg,1,0

@@ -1,0 +1,70 @@
+{
+  "short_name": "Abboda",
+  "name": "Abboda: Food and grocery delivery",
+  "icons": [
+
+      {
+          "src": "images/icon-256x256.png",
+          "sizes": "256x256",
+          "type": "image/png"
+      },
+      {
+          "src": "images/icon-384x384.png",
+          "sizes": "384x384",
+          "type": "image/png"
+      },
+
+    {
+      "src": "/images/icon-192x1922.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icon-512x5122.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+,
+    {
+      "src": "/images/maskable/maskable_icon.png",
+      "type": "image/png",
+      "sizes": "682x682",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/maskable/maskable_icon_x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/maskable/maskable_icon_x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    }
+    
+  ],
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#071040",
+  "lang":"en",
+  "prefer_related_applications": false,
+  "description": "Food and grocery delivery. We deliver anything anywhere",
+  
+  "screenshots": [
+    {
+      "src": "/images/screenshot1.png",
+      "type": "image/png",
+      "sizes": "540x720"
+    },
+    {
+      "src": "/images/screenshot2.jpg",
+      "type": "image/jpg",
+      "sizes": "540x720"
+    }
+  ]
+  
+}

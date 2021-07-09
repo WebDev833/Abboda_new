@@ -1,0 +1,112 @@
+/*  */
+.wsg-center-pagination nav ul {
+    justify-content: center;
+}
+.btn-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.page-section-model {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: none;
+}
+.page-section-model > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 450px;
+    height: 100%;
+    margin: 0 auto;
+}
+.page-section-model-box {
+    box-shadow: 0 8px 16px 0 rgba(162, 169, 204, 0.24);
+    border-radius: 0px;
+}
+.page-section-model-header {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f1f2f9;
+    color: #334151;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid #e1e6f1;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.page-section-model-body {
+    background-color: #fff;
+    padding: 20px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.page-section-model-header .nav-link {
+    color: #99a6b7;
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.page-section-model .list-group .list-group-item {
+    margin-bottom: 0;
+}
+
+.card-draggable-placeholder {
+    height: 80px;
+    border: 2px solid #8760fb;
+    border-style: dashed;
+    background: #fbfbfb;
+    margin-bottom: 10px;
+}
+
+/* Summernote plugin fix. */
+.note-editor .note-editing-area {
+    position: initial;
+}
+.note-editor.note-frame .note-statusbar
+{
+  display: block;
+}
+.note-editor.note-frame .note-statusbar .note-resizebar .note-icon-bar
+{
+  border-top: 1px solid #8760fb;
+}
+
+/** Codemirror plugin fix. */
+.CodeMirror pre {
+  text-shadow: initial;
+}
+.media-item-text-fix
+{
+  max-width: 140px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Media queries */
+@media (min-width: 992px) {
+    .page-section-model .container {
+        padding: 0;
+    }
+    .page-section-model-header {
+        padding: 15px 20px;
+    }
+    .page-section-model-body {
+        padding: 15px;
+    }
+
+    .page-section-model-checkbox {
+        display: block;
+    }
+}

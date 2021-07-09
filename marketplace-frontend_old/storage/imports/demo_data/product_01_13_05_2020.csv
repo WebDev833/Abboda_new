@@ -1,0 +1,6 @@
+company_id,category_id,name,price,in_stock,active,description,product_image
+21,32,Onion Pizza 1,15.68,1,1,Onion Pizza,http://frontendmarketplace.com/img/products/organic/7.jpg
+21,32,Onion Pizza 2,25.68,1,1,Onion Pizza,
+21,33,Onion Pizza 3,35.68,1,1,Onion Pizza,
+21,33,Onion Pizza 4,45.68,1,1,Onion Pizza,http://frontendmarketplace.com/img/products/organic/7.jpg
+21,35,Onion Pizza 5,55.68,1,1,Onion Pizza,http://frontendmarketplace.com/img/products/organic/7.jpg

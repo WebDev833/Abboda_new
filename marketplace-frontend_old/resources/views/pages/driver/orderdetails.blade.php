@@ -1,0 +1,163 @@
+@extends('pages.driver.driverlayout')
+@section('driverpage')
+@include('pages.driver.navbar')
+<div class="roms--order-detail"> 
+    <h4 class="mb-4">Order Details</h4>
+        
+      <div class="row">
+        <div class="col-md-12">
+          <div class="roms--cancel-order-block text-right">
+            @if ($order->orderstatus->id == 1)
+            <span>
+              <a href="{{ route('driver.acceptorder',['id'=>$order->id]) }}" class="ps-btn ps-btn--sm bg-success mb-4">Accept Order</a>
+            </span>
+            <span>
+              <a href="{{ route('driver.cancelorder',['id'=>$order->id]) }}" class="ps-btn ps-btn--sm bg-danger mb-4">Cancel Order</a>
+            </span>
+            @endif
+            @if (in_array($order->orderstatus->id,[6,7]))
+            <span>
+              @php
+                $base = 'https://www.google.com/maps/dir/?api=1';
+               // $origin = '&origin='.$order->ordergps->driver_lat.','.$order->ordergps->driver_lon;
+              //  $waypoints = '&waypoints='.$order->company->latitude.','.$order->company->longitude;
+              // below origin and waypoint comment in production.
+                $origin = '&origin='.$order->company->latitude.','.$order->company->longitude;
+                $waypoints = '';
+                $dests = '&destination='.$order->ordergps->drop_lat.','.$order->ordergps->drop_lon;                
+                $travelmode = '&travelmode=driving';
+                //$action = '&dir_action=navigate';
+                $direct = $base.$origin.$dests.$waypoints.$travelmode;
+               //  echo urlencode($base.$origin.$dests.$waypoints.$travelmode);
+              @endphp
+              <a href="{{$direct}}" target="_blank" class="ps-btn ps-btn--sm bg-warning mb-4">Open Maps</a>
+            </span>
+            <span>
+              <a href="{{ route('driver.completeorder',['id'=>$order->id]) }}" class="ps-btn ps-btn--sm bg-success mb-4">Complete Order</a>
+            </span>
+            @endif
+          </div>
+        </div>
+      </div>
+
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table ps-table--compare">
+                    <tbody>
+                        <tr>
+                            <td class="heading"># Order ID</td>
+                            <td>{{ $order->unique_order_id}}</td>
+                            <td class="heading">Order Status</td>
+                            <td>{{ $order->orderstatus->name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="heading">Name</td>
+                            <td>{{ $order->user->name }}</td>
+                            <td class="heading">Phone</td>
+                            <td>{{ $order->user->phone }}</td>
+                        </tr>
+                        <tr>
+                            <td class="heading">Email</td>
+                            <td>{{ $order->user->email }}</td>
+                            <td class="heading">Address</td>
+                            <td>{{ $order->address }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-5 mb-5">Order Items</h4>
+    <div class="row">
+        <div class="col-md-12">          
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Quanity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($order->orderitems as $item)
+                        <tr>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->quantity}}</td>
+                            <td>{{ romsProPrice($item->price,false)}}</td>
+                        </tr> 
+                      @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @if ($driver)
+    <h4 class="mt-5 mb-5">Driver Details</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table ps-table--compare">
+                    <tbody>
+                        <tr>
+                            <td class="heading">Driver Name</td>
+                            <td>{{$driver['name']}}</td>
+                            <td class="heading">Driver Vehicle</td>
+                            <td>{{$driver['vehicle']}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> 
+    @endif
+    <h4 class="mt-5 mb-5">Merchant Details</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table ps-table--compare">
+                    <tbody>
+                        <tr>
+                            <td class="heading">Merchant Name</td>
+                            <td>{{$order->company->name}}</td>
+                            <td class="heading">Merchant Address</td>
+                            <td>{{$order->company->address}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <h4 class="mt-5 mb-5">Payment Details</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table ps-table--compare">
+                    <tbody>
+                        {{-- <tr>
+                            <td class="heading">Items Cost</td>
+                            <td>$540</td>
+                            <td class="heading">Delivery Cost</td>
+                            <td>$60</td>
+                        </tr> --}}
+                        <tr>
+                            <td class="heading">Payment Type</td>
+                            @if ($order->payment_method == 1)
+                              <td>Cash on Delivery</td>
+                            @else
+                              <td>Online Payment</td>
+                            @endif                            
+                            <td class="heading">Order Total</td>
+                            <td>{{romsProPrice($order->total,false)}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection

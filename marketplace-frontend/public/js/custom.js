@@ -89,6 +89,21 @@ function ipLookUp()
 });
 
 
+//My Earning page see more button
+ $(document).on('click','.showmore',function(e){
+      $(this).hide();
+  $(this).siblings(".contentshow").show();
+  $(this).siblings(".moredetail").show();
+});
+
+  $(document).on('click','.moredetail',function(e){
+      $(this).hide();
+  $(this).siblings(".contentshows").show();
+  // $(this).siblings(".moredetail").hide();
+
+});
+
+
  $(document).on('change','.roms--country',function(e){
     var url = $(this).data('url');
 //console.log(url);

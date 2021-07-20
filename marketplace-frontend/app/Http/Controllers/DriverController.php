@@ -825,10 +825,37 @@ if (isset($request->car_insurance)) {
 
     public function deliveryDetails()
     {
-
-
+      //&& 'id',$id
+      $orders = Order::whereIn('orderstatus_id',[8] )
+      ->whereHas('acceptorder',function($q){
+        $q->where('driver_id',$this->user->id);
+        $q->where('active',1);
+        $q->where('completed',1);
+        
+      })
+      ->with([
+        'orderstatus' => function($q){
+          $q->select('id','name');
+        }
+      ])
+      ->with([
+        'payment' => function($q){
+          $q->select('order_id','driver_amount');
+        }
+      ])
+      ->with([
+        'settlement' => function($q){
+          $q->select('order_id','received');
+        }
+      ])
+      ->orderBy('id', 'DESC')->get();
+      // echo '<pre>';
+      // print_r($orders);
+      // die();
       return view('pages.driver.deliverydetails', [
+        'user' => $this->user,
         'pageConfigs' => $this->pageConfigs,
+
      
     ]);
 
